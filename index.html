@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>EPARTest</title>
+    <script src='https://aframe.io/releases/0.9.2/aframe.min.js'></script>
+    <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <script>
+        THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
+    </script>
+    <script>
+        console.log("test AR 12");
+    </script>
+</head>
+
+<body style='margin: 0; overflow: hidden;'>
+
+<!--     <script>
+
+        AFRAME.registerComponent('registerevents', {
+            init: function(){
+
+                let marker = this.el;
+
+                marker.setAttribute('emitevents','true');
+
+                marker.addEvenListener('markerFound', function(){
+
+                    let markerId = marker.id;
+                    console.log('markerFound',markerId);
+                });
+
+                marker.addEvenListener('markerLost', function(){
+
+                    let markerId = marker.id;
+                    console.log('markerLost',markerId);
+                });
+
+            }});
+        
+
+    </script> -->
+
+    <a-scene
+        vr-mode-ui="enabled: false"
+		embedded
+        arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false; patternRatio: 0.90'
+        renderer="antialias: false; logarithmicDepthBuffer:true;"
+        >
+
+        <!-- <a-marker-camera preset='hiro'> -->
+        <!-- <a-marker preset="pattern" type="pattern" url="./pattern-markerTrainingImage4.patt"> -->
+        <a-marker-camera preset="pattern" type="pattern" url="./pattern8.patt">
+        
+        <a-entity gltf-model="./unitedBallGLTF/unitedBall.gltf" rotation="0 0 0" scale="1 1 1"
+        animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 10000">
+	
+<!-- 		<a-animation attribute="rotation"
+               dur="5000"
+               fill="forwards"
+               from="90 0 0"
+               to="90 180 180"
+               repeat="indefinite"></a-animation> -->
+		
+	   </a-entity>
+
+        </a-marker>
+
+        <!-- <a-entity camera gps-camera rotation-reader></a-entity> -->
+        <!-- <a-entity camera></a-entity> -->
+        
+	</a-scene>
+
+    <!-- <script>
+
+        const sceneEl = document.querySelector('a-scene');
+        sceneEl.addEvenListener('loaded', () => {
+            sceneEl.camera = new THREEx.PerspectiveCamera();
+        });
+
+    </script> -->
+
+</body>
+
+<!-- aframe/src/component-anchor.js, but it does so in a couple of different places. If you click on that link (https://github.com/jeromeetienne/AR.js/pull/303/files#diff-d6e4c48405c28cfbbe2952ef505ed7f6) , you’ll see in green the lines that should be added to the current component-anchor.js file. Once that’s been changed, navigate to the root aframe directory and run make build && make minify to produce and overwrite the .js and .min.js scripts for your projects. -->
+
+
+<!-- renderer="antialias: true; logarithmicDepthBuffer:true; colorManagement:true; sortObjects: true" -->
